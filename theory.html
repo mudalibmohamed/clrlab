@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Theory</title>
+  <link rel="stylesheet" href="style/theory.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Color Theory</h1>
+    <p class="subtitle">Explore common color harmonies and how they work together.</p>
+
+    <div class="harmony-selector">
+      <button data-type="analogous">Analogous</button>
+      <button data-type="complementary">Complementary</button>
+      <button data-type="triadic">Triadic</button>
+      <button data-type="tetradic">Tetradic</button>
+      <button data-type="monochromatic">Monochromatic</button>
+    </div>
+
+    <div class="harmony-info">
+      <h2 id="harmony-name">Analogous Colors</h2>
+      <p id="harmony-description">
+        Analogous colors sit next to each other on the color wheel and create natural, cohesive palettes.
+      </p>
+    </div>
+
+    <div class="palette-preview" id="palette-preview"></div>
+  </div>
+
+  <script src="js/theory.js"></script>
+</body>
+</html>

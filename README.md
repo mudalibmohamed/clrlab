@@ -1,1 +1,19 @@
 # clrlab
+index.html
+contrast.html
+palette.html
+theory.html
+css/
+  main.css
+  contrast.css
+  palette.css
+  theory.css
+js/
+  main.js
+  contrast.js
+  palette.js
+  theory.js
+assets/
+  icons/
+  fonts/
+  images/

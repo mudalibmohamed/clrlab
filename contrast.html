@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Color Contrast Checker — Friendly + WCAG</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style/contrast.css">
+
+</head>
+<body>
+  <main class="card" role="main" aria-labelledby="pageTitle">
+    <h1 id="pageTitle" class="title">Color Contrast Checker</h1>
+    <div class="subtitle">Instant checks for designers. Enter hex, rgb(), or named colors — updates instantly.</div>
+
+    <div class="cols">
+      <!-- LEFT: inputs + preview -->
+      <section class="left" aria-label="Inputs and preview">
+        <div style="display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap">
+          <div style="flex:1;min-width:230px">
+            <label for="fg-input">Foreground (text)</label>
+            <div class="row">
+              <input id="fg-input" type="text" placeholder="#0F172A, rgb(16,23,42), or navy" aria-label="Foreground color input">
+              <input id="fg-color" type="color" aria-label="Foreground color picker" value="#0F172A">
+            </div>
+            <div class="small" style="margin-top:6px">Try names like <code>white</code>, <code>rebeccapurple</code>, <code>rgb(255,0,0)</code>.</div>
+          </div>
+
+          <div style="width:170px;min-width:170px">
+            <label for="bg-input">Background</label>
+            <div class="row">
+              <input id="bg-input" type="text" placeholder="#ffffff or white" aria-label="Background color input">
+              <input id="bg-color" type="color" aria-label="Background color picker" value="#FFFFFF">
+            </div>
+          </div>
+        </div>
+
+        <div class="preview-card" style="margin-top:14px">
+          <div class="small muted-note">Preview</div>
+          <div id="previewBlock" class="preview-block" role="region" aria-label="Preview area">
+            <div id="previewText" class="preview-text">Aa — The quick brown fox jumps over the lazy dog.</div>
+          </div>
+          <div style="display:flex;gap:8px;align-items:center;justify-content:space-between">
+            <div class="small muted-note">Text color and background update as you type.</div>
+            <div style="display:flex;gap:8px">
+              <button id="swapBtn" class="small-btn" title="Swap colors">Swap</button>
+              <button id="resetBtn" class="small-btn" title="Reset to defaults">Reset</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT: results -->
+      <aside class="right" aria-label="Results">
+        <div class="small muted-note">Results</div>
+        <div class="results" style="margin-top:8px">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <div>
+              <div class="ratio" id="ratioText">—</div>
+              <div class="muted-note">WCAG Contrast Ratio</div>
+            </div>
+            <div style="text-align:right">
+              <div id="percentFriendly" class="friendly">—</div>
+              <div class="muted-note" style="margin-top:6px" id="friendlyExplainer">—</div>
+            </div>
+          </div>
+
+          <div style="margin-top:6px" class="muted-note">Quick interpretation</div>
+          <div style="display:flex;gap:8px;margin-top:8px;align-items:center">
+            <div style="flex:1">
+              <div id="barWrap" style="height:10px;background:#eef2ff;border-radius:999px;overflow:hidden;border:1px solid var(--border)">
+                <div id="barFill" style="height:100%;width:0%;background:linear-gradient(90deg,#4F46E5,#06B6D4)"></div>
+              </div>
+            </div>
+            <div style="width:68px;text-align:right;font-weight:700" id="percentLabel">—</div>
+          </div>
+
+          <div style="margin-top:12px" class="muted-note">WCAG checks</div>
+          <div class="wcag-grid" style="margin-top:8px">
+            <div class="wcag-item"><span>AA (Normal ≥ 4.5)</span><span id="aaNormal">—</span></div>
+            <div class="wcag-item"><span>AA (Large ≥ 3)</span><span id="aaLarge">—</span></div>
+            <div class="wcag-item"><span>AAA (Normal ≥ 7)</span><span id="aaaNormal">—</span></div>
+            <div class="wcag-item"><span>AAA (Large ≥ 4.5)</span><span id="aaaLarge">—</span></div>
+          </div>
+
+          <div style="margin-top:12px" class="muted-note">Notes</div>
+          <ul style="margin:8px 0 0 18px;color:var(--muted);font-size:13px">
+            <li>Percent maps ratio linearly from 1:1 (0%) to 21:1 (100%).</li>
+            <li>Use the ratio & WCAG checks for formal compliance, and the percentage/label for quick design decisions.</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+<script src="js/contrast.js"></script>
+</body>
+</html>

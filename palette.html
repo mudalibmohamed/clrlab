@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Palette Studio — Generator</title>
+  <link rel="stylesheet" href="style/palette.css">
+</head>
+<body>
+  <main class="card" aria-labelledby="appTitle">
+    <header class="topbar">
+      <div>
+        <h1 id="appTitle">Palette Studio</h1>
+        <p class="subtitle">Generate palettes by harmony. Space = generate (locks preserved).</p>
+      </div>
+
+      <div class="controls">
+        <label class="control">
+          Harmony
+          <select id="harmony">
+            <option value="random">Random</option>
+            <option value="analogous">Analogous</option>
+            <option value="complementary">Complementary</option>
+            <option value="triadic">Triadic</option>
+            <option value="tetradic">Tetradic</option>
+            <option value="monochrome">Monochrome</option>
+          </select>
+        </label>
+
+        <label class="control">
+          Count
+          <input id="count" type="number" min="3" max="7" value="5" />
+        </label>
+
+        <button id="generateBtn" class="btn primary" title="Generate (Spacebar)">Generate</button>
+        <button id="exportBtn" class="btn" title="Export">Export</button>
+      </div>
+    </header>
+
+    <section id="palette" class="palette" aria-live="polite" aria-label="Color palette">
+      <!-- swatches injected here -->
+    </section>
+
+    <footer class="note">Click a color or its hex to copy. Lock to keep it during generation.</footer>
+  </main>
+
+  <!-- Shades modal -->
+  <div id="shadesModal" class="modal" role="dialog" aria-hidden="true" aria-labelledby="shadesTitle">
+    <div class="modal-inner" role="document">
+      <button class="modal-close" data-close>&times;</button>
+      <h2 id="shadesTitle">Shades & Tones</h2>
+      <div id="shadesContent" class="shades-grid"></div>
+      <div class="modal-actions">
+        <button id="copyShadesBtn" class="btn">Copy All HEX</button>
+        <button data-close class="btn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Info modal -->
+  <div id="infoModal" class="modal" role="dialog" aria-hidden="true" aria-labelledby="infoTitle">
+    <div class="modal-inner" role="document">
+      <button class="modal-close" data-close>&times;</button>
+      <h2 id="infoTitle">Color Info</h2>
+      <div id="infoContent" class="info-block"></div>
+      <div class="modal-actions">
+        <button data-close class="btn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Export modal -->
+  <div id="exportModal" class="modal" role="dialog" aria-hidden="true" aria-labelledby="exportTitle">
+    <div class="modal-inner" role="document">
+      <button class="modal-close" data-close>&times;</button>
+      <h2 id="exportTitle">Export Palette</h2>
+      <div class="export-options">
+        <label><input type="radio" name="exportType" value="png" checked> PNG (image)</label>
+        <label><input type="radio" name="exportType" value="json"> JSON</label>
+        <label><input type="radio" name="exportType" value="txt"> TXT</label>
+      </div>
+      <div class="modal-actions">
+        <button id="doExport" class="btn primary">Export</button>
+        <button data-close class="btn">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/palette.js"></script>
+</body>
+</html>
